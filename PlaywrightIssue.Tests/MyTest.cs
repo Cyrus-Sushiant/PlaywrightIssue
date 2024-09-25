@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Hosting.Server.Features;
-using Microsoft.Playwright.MSTest;
+﻿using Microsoft.Playwright.MSTest;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PlaywrightIssue.Components;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
@@ -18,19 +17,30 @@ public partial class MyTest : PageTest
             EnvironmentName = Environments.Development
         });
 
-        builder.WebHost.UseUrls("http://127.0.0.1:2001");
+        var serverAddress = "http://127.0.0.1:2001";
 
-        builder.AddServerWebProjectServices();
+        builder.WebHost.UseUrls(serverAddress);
+
+        builder.WebHost.UseStaticWebAssets();
+
+        builder.Services.AddRazorComponents()
+                .AddInteractiveServerComponents()
+                .AddInteractiveWebAssemblyComponents();
 
         var app = builder.Build();
 
-        app.ConfiureMiddlewares();
+        app.UseAntiforgery();
+
+        app.UseStaticFiles();
+
+        app.MapRazorComponents<App>()
+            .AddInteractiveServerRenderMode()
+            .AddInteractiveWebAssemblyRenderMode()
+            .AddAdditionalAssemblies(typeof(Client._Imports).Assembly);
 
         await app.StartAsync();
 
-        var serverAddress = new Uri(app.Services.GetRequiredService<IServer>().Features.Get<IServerAddressesFeature>()!.Addresses.First());
-
-        await Page.GotoAsync(new Uri(serverAddress, "counter").ToString());
+        await Page.GotoAsync($"{serverAddress}/counter");
 
         Process.Start(new ProcessStartInfo(serverAddress.ToString()) { UseShellExecute = true });
 
