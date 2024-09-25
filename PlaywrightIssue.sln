@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightIssue", "Playwrig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightIssue.Client", "PlaywrightIssue.Client\PlaywrightIssue.Client.csproj", "{D25B78D4-BC90-436B-AF3B-4EA799984C4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaywrightIssue.Tests", "PlaywrightIssue.Tests\PlaywrightIssue.Tests.csproj", "{1220470E-3B11-4B20-96B1-EE8671166155}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D25B78D4-BC90-436B-AF3B-4EA799984C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D25B78D4-BC90-436B-AF3B-4EA799984C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D25B78D4-BC90-436B-AF3B-4EA799984C4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1220470E-3B11-4B20-96B1-EE8671166155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1220470E-3B11-4B20-96B1-EE8671166155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1220470E-3B11-4B20-96B1-EE8671166155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1220470E-3B11-4B20-96B1-EE8671166155}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
